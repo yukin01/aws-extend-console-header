@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es2020",
+    "target": "es2018",
     "module": "commonjs", // for webpack-ts
     "moduleResolution": "node",
     "jsx": "react",
