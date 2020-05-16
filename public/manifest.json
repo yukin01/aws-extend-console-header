@@ -1,0 +1,17 @@
+{
+  "manifest_version": 2,
+  "name": "AWS Extend Console Header",
+  "description": "Chrome Extension that extends AWS console header",
+  "version": "1.0",
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*.aws.amazon.com/*", "https://*.aws.amazon.com/*"],
+      "js": ["contentScripts.js"]
+    }
+  ],
+  "permissions": ["storage"]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "aws-extend-console-header",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "ssh://git@github.com/yukin01/aws-extend-console-header",
+  "author": "yukin01 <bump1105@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack-dev-server",
+    "type-check": "tsc",
+    "format": "prettier --write '**/*.{js,ts,json}'"
+  },
+  "devDependencies": {
+    "@types/node": "^14.0.1",
+    "@types/webpack": "^4.41.13",
+    "copy-webpack-plugin": "^6.0.0",
+    "css-loader": "^3.5.3",
+    "html-webpack-plugin": "^4.3.0",
+    "prettier": "^2.0.5",
+    "style-loader": "^1.2.1",
+    "ts-loader": "^7.0.4",
+    "ts-node": "^8.10.1",
+    "typescript": "^3.9.2",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
