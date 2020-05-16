@@ -40,7 +40,7 @@ const config: Configuration = {
       filename: 'popup.html',
       chunks: ['popup']
     }),
-    new CopyPlugin({patterns: [{ from: 'public', to: '.' }]})
+    new CopyPlugin({ patterns: [{ from: 'public', to: '.' }] })
   ]
 }
 

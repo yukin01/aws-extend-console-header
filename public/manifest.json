@@ -4,7 +4,10 @@
   "description": "Chrome Extension that extends AWS console header",
   "version": "1.0",
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": {
+      "32": "icon32.png",
+      "256": "icon256.png"
+    },
     "default_popup": "popup.html"
   },
   "content_scripts": [
