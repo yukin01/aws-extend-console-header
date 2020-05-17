@@ -11,7 +11,11 @@ export type HeaderConfig = {
 const key = 'config'
 
 export const defaultConfig: HeaderConfig = {
-  patterns: [...Array(5)].map((_, i) => ({ key: `${i}`, color: '', expr: '' }))
+  patterns: [...Array(5)].map((_, i) => ({
+    key: `${i}`,
+    color: '',
+    expr: `${i}`
+  }))
 }
 
 export const client = {
