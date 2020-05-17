@@ -6,15 +6,24 @@
   "author": "yukin01 <bump1105@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "clean": "rm -rf dist",
     "build": "webpack --mode production",
     "dev": "webpack-dev-server",
     "type-check": "tsc",
     "format": "prettier --write '**/*.{js,ts,json}'"
   },
+  "dependencies": {
+    "antd": "^4.2.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
   "devDependencies": {
     "@types/chrome": "^0.0.112",
     "@types/node": "^14.0.1",
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
     "@types/webpack": "^4.41.13",
+    "@types/webpack-dev-server": "^3.10.1",
     "copy-webpack-plugin": "^6.0.0",
     "css-loader": "^3.5.3",
     "html-webpack-plugin": "^4.3.0",

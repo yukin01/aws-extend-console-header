@@ -6,12 +6,16 @@ import CopyPlugin from 'copy-webpack-plugin'
 
 const config: Configuration = {
   entry: {
-    popup: path.join(__dirname, 'src/popup.ts'),
+    popup: path.join(__dirname, 'src/popup.tsx'),
     contentScripts: path.join(__dirname, 'src/contentScripts.ts')
   },
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].js'
+  },
+  devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    index: 'popup.html'
   },
   module: {
     rules: [
@@ -41,7 +45,13 @@ const config: Configuration = {
       chunks: ['popup']
     }),
     new CopyPlugin({ patterns: [{ from: 'public', to: '.' }] })
-  ]
+  ],
+  optimization: {
+    splitChunks: {
+      name: 'vendor',
+      chunks: 'initial'
+    }
+  }
 }
 
 export default config
