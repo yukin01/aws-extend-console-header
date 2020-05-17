@@ -14,7 +14,7 @@ export const defaultConfig: HeaderConfig = {
   patterns: [...Array(5)].map((_, i) => ({
     key: `${i}`,
     color: '',
-    expr: `${i}`
+    expr: ''
   }))
 }
 

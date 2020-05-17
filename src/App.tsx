@@ -1,7 +1,6 @@
 import React from 'react'
 import { Layout } from 'antd'
 import { ConfigTable } from './components/Table'
-import { defaultConfig } from './header'
 
 const { Header, Content } = Layout
 
@@ -11,7 +10,7 @@ export const App = () => (
       <h3 style={{ color: '#ffffff' }}>AWS Extend Console Header</h3>
     </Header>
     <Content>
-      <ConfigTable config={defaultConfig} />
+      <ConfigTable />
     </Content>
   </Layout>
 )

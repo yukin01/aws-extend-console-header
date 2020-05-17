@@ -1,13 +1,10 @@
-import React, { useEffect } from 'react'
-import { flatten, unflatten } from 'flat'
-import { HeaderConfig, HeaderColorPattern } from '../header'
+import React, { useState, useEffect } from 'react'
+import { unflatten } from 'flat'
+import { merge } from 'lodash'
+import { HeaderConfig, HeaderColorPattern, client } from '../header'
 import { Table, Input, Form, Button } from 'antd'
 import { ColumnProps } from 'antd/es/table'
 import { Store } from 'antd/es/form/interface'
-
-type Props = {
-  config: HeaderConfig
-}
 
 const columns: ColumnProps<HeaderColorPattern>[] = [
   {
@@ -15,9 +12,9 @@ const columns: ColumnProps<HeaderColorPattern>[] = [
     dataIndex: 'expr',
     key: 'expr',
     width: '70%',
-    render: (_, __, i) => (
+    render: (v, _, i) => (
       <Form.Item name={`patterns.${i}.expr`} noStyle>
-        <Input placeholder={'Account'} />
+        <Input placeholder={'Account'} defaultValue={v} />
       </Form.Item>
     )
   },
@@ -25,27 +22,34 @@ const columns: ColumnProps<HeaderColorPattern>[] = [
     title: 'Color',
     dataIndex: 'color',
     key: 'color',
-    render: (_, __, i) => (
+    render: (v, _, i) => (
       <Form.Item name={`patterns.${i}.color`} noStyle>
-        <Input />
+        <Input defaultValue={v} />
       </Form.Item>
     )
   }
 ]
 
-export const ConfigTable: React.FC<Props> = ({ config }) => {
+export const ConfigTable = () => {
   const [form] = Form.useForm()
-  const onFinish = (values: Store) => console.log(unflatten(values))
+  const [config, setConfig] = useState<HeaderConfig>()
+
+  const onFinish = (values: Store) => {
+    const newConfig = merge({}, config, unflatten(values))
+    client
+      .set(newConfig)
+      .then(() => console.info('[Info] Header configuration is saved'))
+  }
 
   useEffect(() => {
-    form.setFieldsValue(flatten(config))
+    client.get().then(setConfig)
   }, [])
 
   return (
-    <Form name="config" form={form} onFinish={onFinish}>
+    <Form form={form} onFinish={onFinish}>
       <Table
         columns={columns}
-        dataSource={config.patterns}
+        dataSource={config?.patterns}
         size="small"
         pagination={false}
         style={{
@@ -56,7 +60,7 @@ export const ConfigTable: React.FC<Props> = ({ config }) => {
         <Button
           type="primary"
           htmlType="submit"
-          style={{ float: 'right', marginRight: 10 }}
+          style={{ float: 'right', marginRight: 12 }}
         >
           Save
         </Button>
