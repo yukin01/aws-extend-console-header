@@ -1,16 +1,17 @@
-export type HeaderPattern = {
+export type HeaderColorPattern = {
+  key: string
   color: string
   expr: string
 }
 
 export type HeaderConfig = {
-  patterns: HeaderPattern[]
+  patterns: HeaderColorPattern[]
 }
 
 const key = 'config'
 
-const defaultConfig: HeaderConfig = {
-  patterns: []
+export const defaultConfig: HeaderConfig = {
+  patterns: [...Array(5)].map((_, i) => ({ key: `${i}`, color: '', expr: '' }))
 }
 
 export const client = {
