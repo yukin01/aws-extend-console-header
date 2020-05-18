@@ -1,7 +1,7 @@
 export type HeaderColorPattern = {
   key: string
   color: string
-  expr: string
+  account: string
 }
 
 export type HeaderConfig = {
@@ -14,7 +14,7 @@ export const defaultConfig: HeaderConfig = {
   patterns: [...Array(5)].map((_, i) => ({
     key: `${i}`,
     color: '',
-    expr: ''
+    account: ''
   }))
 }
 

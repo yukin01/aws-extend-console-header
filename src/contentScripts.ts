@@ -19,8 +19,7 @@ const changeBackground = (color: string) => (element: HTMLElement | null) => {
   console.info(`[Info] Account is ${account}`)
 
   const { patterns } = await client.get()
-  // const color = patterns.find(p => p.expr === account)?.color ?? '#00008B'
-  const pattern = patterns.find(p => p.expr === account)
+  const pattern = patterns.find(p => p.account === account)
   if (!pattern) {
     console.info(`[Info] No pattern to match`)
     return

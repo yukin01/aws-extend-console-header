@@ -9,11 +9,11 @@ import { Store } from 'antd/es/form/interface'
 const columns: ColumnProps<HeaderColorPattern>[] = [
   {
     title: 'Account',
-    dataIndex: 'expr',
-    key: 'expr',
+    dataIndex: 'account',
+    key: 'account',
     width: '70%',
     render: (v, _, i) => (
-      <Form.Item name={`patterns.${i}.expr`} noStyle>
+      <Form.Item name={`patterns.${i}.account`} noStyle>
         <Input placeholder={'Account'} defaultValue={v} />
       </Form.Item>
     )
