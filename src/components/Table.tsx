@@ -8,13 +8,18 @@ import { Store } from 'antd/es/form/interface'
 
 const columns: ColumnProps<HeaderColorPattern>[] = [
   {
-    title: 'Account',
+    title: 'Account (RegExp)',
     dataIndex: 'account',
     key: 'account',
     width: '70%',
     render: (v, _, i) => (
-      <Form.Item name={`patterns.${i}.account`} noStyle>
-        <Input placeholder={'Account'} defaultValue={v} />
+      <Form.Item
+        key={i}
+        name={`patterns.${i}.account`}
+        initialValue={v}
+        noStyle
+      >
+        <Input placeholder={'Account'} />
       </Form.Item>
     )
   },
@@ -23,8 +28,8 @@ const columns: ColumnProps<HeaderColorPattern>[] = [
     dataIndex: 'color',
     key: 'color',
     render: (v, _, i) => (
-      <Form.Item name={`patterns.${i}.color`} noStyle>
-        <Input defaultValue={v} />
+      <Form.Item key={i} name={`patterns.${i}.color`} initialValue={v} noStyle>
+        <Input />
       </Form.Item>
     )
   }
@@ -45,11 +50,15 @@ export const ConfigTable = () => {
     client.get().then(setConfig)
   }, [])
 
+  const dataSource = config?.patterns?.map((p, i) => ({ key: `${i}`, ...p }))
+  console.log(dataSource)
+
   return (
     <Form form={form} onFinish={onFinish}>
       <Table
+        rowKey="id"
         columns={columns}
-        dataSource={config?.patterns}
+        dataSource={dataSource}
         size="small"
         pagination={false}
         style={{

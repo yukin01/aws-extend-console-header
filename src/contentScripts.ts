@@ -1,7 +1,7 @@
 import { client } from './header'
 
 const changeBackground = (color: string) => (element: HTMLElement | null) => {
-  // element?.style.background = color;
+  // element?.style.background = color; // If Swift...
   if (element) {
     element.style.background = color
   }
@@ -19,7 +19,7 @@ const changeBackground = (color: string) => (element: HTMLElement | null) => {
   console.info(`[Info] Account is ${account}`)
 
   const { patterns } = await client.get()
-  const pattern = patterns.find(p => p.account === account)
+  const pattern = patterns.find(p => new RegExp(p.account).test(account))
   if (!pattern) {
     console.info(`[Info] No pattern to match`)
     return
