@@ -10,8 +10,11 @@ const changeBackground = (color: string) => (element: HTMLElement | null) => {
 ;(async () => {
   console.info('[Info] AWS Extend Console Header has started')
 
-  const id = 'awsc-login-display-name-account'
-  const account = document.getElementById(id)?.textContent
+  const loginId = 'awsc-login-display-name-account'
+  const roleId = 'awsc-role-display-name-account'
+  const account = (
+    document.getElementById(roleId) || document.getElementById(loginId)
+  )?.textContent
   if (!account) {
     console.error('[Error] Failed to get account')
     return
