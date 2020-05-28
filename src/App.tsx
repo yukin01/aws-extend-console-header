@@ -1,6 +1,6 @@
 import React from 'react'
 import { Layout } from 'antd'
-import { ConfigTable } from './components/Table'
+import { FormContainer } from './containers/Form'
 
 const { Header, Content } = Layout
 
@@ -10,7 +10,7 @@ export const App = () => (
       <h3 style={{ color: '#ffffff' }}>AWS Extend Console Header</h3>
     </Header>
     <Content>
-      <ConfigTable />
+      <FormContainer />
     </Content>
   </Layout>
 )
