@@ -3,6 +3,7 @@ import { HeaderColorPattern, HeaderConfig } from '../header'
 import { Table, Form, Input, Button } from 'antd'
 import { ColumnProps } from 'antd/es/table'
 import { FormProps } from 'antd/es/form'
+import { ColorInput } from './Color'
 
 export type OnFinish = NonNullable<FormProps['onFinish']>
 
@@ -11,7 +12,7 @@ const columns: ColumnProps<HeaderColorPattern>[] = [
     title: 'Account (RegExp)',
     dataIndex: 'account',
     key: 'account',
-    width: '70%',
+    width: '80%',
     render: (v, _, i) => (
       <Form.Item
         key={i}
@@ -29,7 +30,8 @@ const columns: ColumnProps<HeaderColorPattern>[] = [
     key: 'color',
     render: (v, _, i) => (
       <Form.Item key={i} name={`patterns.${i}.color`} initialValue={v} noStyle>
-        <Input />
+        {/* <Input /> */}
+        <ColorInput />
       </Form.Item>
     )
   }
