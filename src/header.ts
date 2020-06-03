@@ -44,7 +44,7 @@ export const client: Client = {
     })
 }
 
-export const mockClient: Client = ((): Client => {
+export const mockClient = ((): Client => {
   const map = new Map<string, HeaderConfig>()
   return {
     get: () => Promise.resolve(map.get(key) || defaultConfig),

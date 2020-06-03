@@ -8,6 +8,16 @@ type Props = {
 }
 
 export const ColorInput: FC<Props> = ({ value, onChange }) => {
+  const defaultColors = [
+    '#232F3E',
+    '#CD5400',
+    '#00008B',
+    '#006400',
+    '#8B0000',
+    '#8B008B',
+    '#8B572A'
+  ]
+
   const onColorChange: ColorChangeHandler = result => {
     onChange && onChange(result.hex)
     console.log(result)
@@ -16,8 +26,14 @@ export const ColorInput: FC<Props> = ({ value, onChange }) => {
   return (
     <Dropdown
       overlay={
-        <TwitterPicker color={value} onChange={onColorChange} triangle="hide" />
+        <TwitterPicker
+          color={value}
+          colors={defaultColors}
+          onChange={onColorChange}
+          triangle="hide"
+        />
       }
+      trigger={['click']}
     >
       <Row align="middle" justify="center">
         <Col

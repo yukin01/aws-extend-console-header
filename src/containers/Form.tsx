@@ -1,17 +1,24 @@
 import React, { useState, useEffect } from 'react'
-import { unflatten } from 'flat'
+import flatten, { unflatten } from 'flat'
 import { merge } from 'lodash'
-import { HeaderConfig, client } from '../header'
-import { FormComponent, OnFinish } from '../components/Form'
+import { HeaderConfig, client, defaultConfig } from '../header'
+import { FormComponent, OnFinish, OnClear } from '../components/Form'
+import { Form } from 'antd'
 
 export const FormContainer = () => {
   const [config, setConfig] = useState<HeaderConfig>()
+  const [form] = Form.useForm()
 
   const onFinish: OnFinish = values => {
     const newConfig = merge({}, config, unflatten(values))
     client
       .set(newConfig)
       .then(() => console.info('[Info] Header configuration is saved'))
+  }
+
+  const onClear: OnClear = () => {
+    form.setFieldsValue(flatten(defaultConfig))
+    // setConfig(defaultConfig)
   }
 
   useEffect(() => {
@@ -27,5 +34,12 @@ export const FormContainer = () => {
       })
   }, [])
 
-  return <FormComponent config={config} onFinish={onFinish}></FormComponent>
+  return (
+    <FormComponent
+      form={form}
+      config={config}
+      onFinish={onFinish}
+      onClear={onClear}
+    ></FormComponent>
+  )
 }
