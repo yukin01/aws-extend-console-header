@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "AWS Extend Console Header",
   "description": "Chrome Extension that extends AWS console header",
-  "version": "1.0",
+  "version": "1.0.0",
   "browser_action": {
     "default_icon": {
       "32": "icon32.png",

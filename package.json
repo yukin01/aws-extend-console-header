@@ -6,11 +6,12 @@
   "author": "yukin01 <bump1105@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "clean": "rm -rf dist",
+    "clean": "rm -rf dist dist.zip",
     "build": "webpack --mode production",
     "dev": "webpack-dev-server",
     "type-check": "tsc",
-    "format": "prettier --write '**/*.{js,ts,json}'"
+    "format": "prettier --write '**/*.{js,ts,json}'",
+    "zip": "zip -r dist.zip dist/"
   },
   "dependencies": {
     "antd": "^4.2.3",
