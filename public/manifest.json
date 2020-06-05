@@ -2,10 +2,12 @@
   "manifest_version": 2,
   "name": "AWS Extend Console Header",
   "description": "Chrome Extension that extends AWS console header",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "permissions": ["storage"],
   "browser_action": {
     "default_icon": {
       "32": "icon32.png",
+      "128": "icon128.png",
       "256": "icon256.png"
     },
     "default_popup": "popup.html"
@@ -16,5 +18,9 @@
       "js": ["contentScripts.js"]
     }
   ],
-  "permissions": ["storage"]
+  "icons": {
+    "32": "icon32.png",
+    "128": "icon128.png",
+    "256": "icon256.png"
+  }
 }

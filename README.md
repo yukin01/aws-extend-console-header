@@ -16,9 +16,9 @@ Easily customize your AWS Console headers.
 - change the color of the header using regular expressions.
 - save your settings and synchronize them between devices.
 
-## Install
+## Installation
 
-[WIP] Chrome Web Store
+[Chrome Web Store](https://chrome.google.com/webstore/detail/aws-extend-console-header/liieekbljnaodacnhebgepdbbepbjkje)
 
 ## How to configure
 
